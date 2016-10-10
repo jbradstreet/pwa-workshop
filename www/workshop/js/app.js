@@ -59,3 +59,16 @@ function updateTodoList(data) {
     root.appendChild(emt);
   });
 }
+
+
+// check if there is serviceWorker in navigator object
+if ('serviceWorker' in navigator) {
+  // add a promise to install service worker
+  let swPromise = navigator.serviceWorker.register('serviceworker.js');
+  swPromise.then(registration => {
+    console.log('service worker registration: ', registration);
+  });
+};
+
+// service worker is now serving your page, before anything hits the network!
+// now, need to cache some assets
